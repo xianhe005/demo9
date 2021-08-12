@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>cors</title>
+</head>
+<body>
+<h2>cors</h2>
+<button type="button" onclick="test()">点我发送ajax请求</button>
+
+<h4 id="msg"></h4>
+
+<script>
+    function test() {
+        //alert();
+        let xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+            if (xhr.status === 200 && xhr.readyState === 4) {
+                console.log(xhr.responseText);
+                document.getElementById("msg").innerText = "返回结果：" + xhr.responseText;
+            }
+        }
+        xhr.open("GET", "http://localhost:8081/hellos");
+        xhr.send();
+    }
+</script>
+</body>
+</html>

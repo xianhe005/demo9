@@ -1,0 +1,29 @@
+mysql:
+  host: ENC(rOxhqngX2VpvmlrfjwkHnEcTulFFadEO)
+
+server:
+  port: 8081
+spring:
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    cache: false
+
+  #整合mybatis
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${mysql.host}:3306/ems-thymeleaf?characterEncoding=UTF-8
+    username: ENC(0IhhUdeDouAQYsBUmtyIMQ==) #root
+    password: ENC(HxBV0YMJ05Flmj7JOfcXN/UoKuXbkSKQ) #password
+
+#mybatis
+mybatis:
+  mapper-locations: classpath:com/hxh/demo9/mapper/*.xml #mapper文件位置
+  type-aliases-package: com.hxh.demo9.entity #实体类的包名
+
+jasypt:
+  encryptor:
+    algorithm: PBEWithMD5AndDES #加密算法
+    #password: aaxxxxxx #密钥 不能写在配置中 通过启动参数传入：-Djasypt.encryptor.password=aaxxxxxx
+    #jar包部署启动命令：nohup java -jar -Djasypt.encryptor.password=aaxxxxxx app.jar
